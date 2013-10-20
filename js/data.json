@@ -1,0 +1,129 @@
+
+{
+
+	"current": 0,
+	"titulo": "Combustível",
+	"lista": [
+
+		{
+			"id": "opetroleoehnosso",
+			"nome": "O Petróleo é nosso!",
+			"ajuda": "Crises e guerras já aconteceram por causa do petróleo, o combustível fóssil mais estratégico do mundo. Dez estados brasileiros possuem reservas de petróleo - o volume total que se pode extrair de uma jazida. Nesse desafio, você deve mostrar quais são estes estados e distribuir os pinos proporcionalmente.",
+			"criadopor": "Controladoria Geral da União",
+			"fonte": "http://www.anp.gov.br/?dw=8738",
+			"tags": "Energia fóssil, energia, petróleo, combustível",
+			"exibiu_dica": false,
+			"medida": "m3",
+			"valores": {
+
+				"MG": {
+					"nome": "Minas Gerais",
+					"sigla": "MG",
+					"descricao": "Minas Gerais é o maior produtor de leite. E Belo Horizonte é a capital internacional dos butecos\nVocê precisa experimentar um queijo com goiabada para saber o valor que isso tem para a identidade mineira.",
+					"geo": [0, 0],
+					"zoom": 5,
+					"valor_real": 123,
+					"valor_percentual": 0,
+					"valor_percentual_marcado": 0,
+					"marcador_total": 3,
+					"marcador_selecionado": 0,
+					"erro": false
+				},
+
+				"GO": {
+					"nome": "Goiás",
+					"sigla": "GO",
+					"descricao": "Goiás é...",
+					"geo": [0, 0],
+					"zoom": 5,
+					"valor_real": 123,
+					"valor_percentual": 0,
+					"valor_percentual_marcado": 0,
+					"marcador_total": 1,
+					"marcador_selecionado": 0,
+					"erro": false
+				},
+
+				"SÃO PAULO": {
+					"nome": "São Paulo",
+					"sigla": "SÃO PAULO",
+					"descricao": "São Paulo é...",
+					"geo": [0, 0],
+					"zoom": 5,
+					"valor_real": 123,
+					"valor_percentual": 0,
+					"valor_percentual_marcado": 0,
+					"marcador_total": 1,
+					"marcador_selecionado": 0,
+					"erro": false
+				}
+
+			},
+			"geo": [-13.724711186422933, -47.29408309863281],
+			"zoom": 5,
+			"minZoom": 5,
+			"maxZoom": 7,
+			"marcadores": [],
+			"marcador_total": 5,
+			"marcador_valor": 20
+
+		},
+
+
+		{
+			"id": "fogoeterno",
+			"nome": "Fogo eterno",
+			"ajuda": "Na Antiguidade, povos como os Persas, Babilônicos e Gregos construiram templos em torno dos locais onde o gás natural era expelido naturalmente, soltando uma fumaça contínua. Era o chamado \"Fogo eterno\". Hoje, essa fonte de energia, considerada mais limpa do que o carvão e o petróleo, é utilizada em casas, indústrias e automóveis. Localize no mapa quais são os nove estados que possuem reservas de gás natural - o volume total que se pode extrair - e separe os peões proporcionalmente à quantidade.",
+			"criadopor": "Controladoria Geral da União / Lab de Cultura Digital",
+			"fonte": "http://www.anp.gov.br/?dw=8738",
+			"tags": "Energia fóssil, energia, gás natural, combustível",
+			"exibiu_dica": false,
+			"medida": "m3",
+			"valores": {
+
+				"MG": {
+					"nome": "Minas Gerais",
+					"sigla": "MG",
+					"descricao": "Minas Gerais é o maior produtor de leite. E Belo Horizonte é a capital internacional dos butecos\nVocê precisa experimentar um queijo com goiabada para saber o valor que isso tem para a identidade mineira.",
+					"geo": [0, 0],
+					"zoom": 5,
+					"valor_real": 123, 
+					"valor_percentual": 30,
+					"valor_percentual_marcado": 0,
+					"marcador_total": 10,
+					"marcador_selecionado": 0
+				},
+
+				"SÃO PAULO": {
+					"nome": "São Paulo",
+					"sigla": "SÃO PAULO",
+					"descricao": "São Paulo é...",
+					"geo": [0, 0],
+					"zoom": 5,
+					"valor_real": 123,
+					"valor_percentual": 0,
+					"valor_percentual_marcado": 0,
+					"marcador_total": 0,
+					"marcador_selecionado": 0,
+					"erro": false
+				}
+
+
+			},
+
+			"geo": [-22.262410053066795, -48.34877059863281],
+			"zoom": 7,
+			"minZoom": 7,
+			"maxZoom": 7,
+
+			"marcadores": [],
+			"marcador_total": 10,
+			"marcador_valor": 5
+
+		}
+
+	]
+}
+
+
+

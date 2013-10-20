@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Mini Brasil</title>
+    <link href="css/main.css" rel="stylesheet">
+
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false&amp;libraries=visualization&amp;language=pt-BR&amp;region=BR"></script>
+    <script src="js/dados.js"></script>
+
+
+    <style type="text/css">
+
+
+		body {
+			color: #5a5a5a;
+		}
+
+		#perguntas {
+			position: absolute;
+			right: 1em;
+			top: 1em;
+			width: 400px;
+			background-color:rgba(250,250,250,0.8);
+			z-index: 9;
+			padding: 1em;
+			display: none;
+		}
+
+		#map-canvas.blocked {
+			z-index: -1;
+		}
+
+		#carousel-desafios {
+			width: 80%;
+			margin: 0 auto;
+			display: none;
+		}
+
+		#carousel-desafios .carousel-inner {
+			height: 90px;
+		}
+		#carousel-desafios .item {
+			height: 100%;
+			text-align: center;
+		}
+
+    </style>
+</head>
+<body>
+
+
+
+
+
+		<div id="map-canvas"></div>
+
+
+		<ul id="desafios-itens">
+			<!-- <li>1</li> -->
+		</ul>
+		<div id="desafios-titulo">
+			<!-- Desafio 1: aonde concentra o dinheiro? -->
+		</div>
+
+		<ul id="base">
+
+			<li>
+				<h4><span class="glyphicon glyphicon-bullhorn"></span> Para criar um novo peão, clique na região desejada do mapa. <br/>Clique no peão caso deseje editá-lo ou removê-lo.</h4>
+				<!-- <img src="" /><img src="holder.js/100x100%/industrial" /> -->
+
+				<div style="position: absolute; right: .2em; top: .2em; text-align: right;font-size: 3em;">
+					<img src="img/peao_ok.png" style="float: right; max-height: 70%; margin: 0 0 0 .2em;" />
+					<span id="marcadores_pendentes">20</span>
+				</div>
+
+			</li>
+
+			<li>
+				<h4>Desafio concluído com sucesso!</h4>
+			</li>
+
+			<li>
+				<a id="btnFinalizarDesafio" class="btn btn-medium btn-success" href="#" style="float: left; margin: .5em 0.8em 0 0;"><span class="glyphicon glyphicon-ok"></span> TERMINEI</a>
+				<h4>Reposicione os pinos quantas vezes quiser!<br/>Para finalizar e conferir o resultado clique no botão ao lado.</h4>
+
+			</li>
+
+
+
+		</ul>
+
+
+
+
+
+
+    <div id="perguntas">
+      
+    	<h1>Desafio 1/5</h1>
+    	<h2>Como você acha que o PIB está distribuído nos Estados do Brasil?</h2>
+
+    	<p>Clique no mapa para criar um novo marcador. Cada marcador possui <strong>5%</strong> do PIB nacional.</p>
+    	<p>Quando finalizar clique em "VERIFICAR RESULTADO" para saber o resultado.</p>
+    	<p><small><strong>Atenção:</strong> Pinos verdes estão vinculados a um Estado. Já os pinos vermelhos não. Você pode arrastar e reposicionar marcadores.</small></p>
+
+ 		<a class="btn btn-large btn-success disabled" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-ok"></span> VERIFICAR RESULTADO</a>
+
+
+    </div>
+
+
+
+
+
+	<!-- MODAL DE START DO JOGO -->
+	<div id="modal-start" class="modal fade" style="display: none;">
+		<div class="modal-dialog" style="width: 800px;">
+			<div class="modal-content" style="min-height: 500px;">
+				<div class="modal-body" style="background-color: #555; padding: 0;">
+
+
+					<!-- Carousel
+					================================================== -->
+					<div id="carousel-start" class="carousel slide" style="">
+
+
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<li data-target="#carousel-start" data-slide-to="0" class="active"></li>
+							<li data-target="#carousel-start" data-slide-to="1"></li>
+							<li data-target="#carousel-start" data-slide-to="2"></li>
+						</ol>
+
+						<div class="carousel-inner">
+
+
+							<div class="item active" style="min-height: 500px;">
+
+								<div class="container" style="color: #fff;">
+
+									<div class="carousel-caption">
+
+										<h1>Mini Brasil</h1>
+										<p class="lead">Pensar pequeno pode ser mais divertido do que pensar grande!</p>
+
+										<p>O Brasil é uma imensidão. <br/>Qualquer informação pode atingir níveis monstruosos.<br/>
+										É por isso que esse jogo cria desafios a partir de qualquer dado reduzido a 5% do total. 
+										E transforma números em peões, que devem ser distribuídos pelo mapa.</p>
+
+										<p><a class="btn btn-mediun btn-primary" href="#carousel-start" data-slide="next">Próximo <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+										<p>&nbsp;</p>
+
+									</div>
+								</div>
+
+							</div>
+
+
+
+							<div class="item" style="min-height: 500px;">
+								<div class="container">
+									<div class="carousel-caption">
+
+										<h1>Além de jogar, você pode criar um desafio!</h1>
+										<p class="lead">Isso mesmo! Envie sugestões de desafios.<br/>
+											Em breve permitiremos que você crie novos desafios dentro do próprio jogo!</p>
+										<p><a href="http://goo.gl/M9G396" target="_blank" style="color: #bbb;">Entre em contato</a> para sugerir um novo desafio.</p>
+
+										<p><a class="btn btn-mediun btn-primary" href="#carousel-start" data-slide="next">Ver desafios disponíveis <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+										<p>&nbsp;</p>
+									</div>
+								</div>
+							</div>
+
+
+
+							<div class="item" style="min-height: 500px;">
+								<div class="container" style="color: #fff;">
+										<h1>Carregar desafio</h1>
+										<div id="lista_desafios">
+											<!-- <a href="#" class="btn btn-mediun btn-info btn-block">Brasil e seus recursos</a> -->
+										</div>
+										
+
+										<p>&nbsp;</p>
+
+										<p class="lead">Abrir desafio via url</p>
+										<div class="row">
+										  <div class="col-lg-6">
+										    <div class="input-group">
+										      <input type="text" class="form-control" id="txt_desafiourl">
+										      <span class="input-group-btn">
+										        <button id="btn_carregardesafio" class="btn btn-default btn-primary" type="button">carregar...</button>
+										      </span>
+										    </div><!-- /input-group -->
+										  </div><!-- /.col-lg-6 -->
+										</div><!-- /.row -->
+
+										<p>&nbsp;</p>
+										<p class="lead">Sugerir desafios</p>
+										<p><a href="http://goo.gl/M9G396" target="_blank" style="color: #bbb;">Entre em contato</a> para sugerir um novo desafio.</p>
+										
+
+										<p>&nbsp;</p>
+
+								</div>
+							</div>
+
+
+						</div>	<!-- /.carousel-inner -->
+
+					</div><!-- /.carousel -->
+
+				</div> <!-- modal-body -->
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+	<!-- MODAL DE DICA DO DESAFIO -->
+	<div id="desafio-dica" class="modal fade" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content" style="background-color: #555; color: #fff; width: 500px; min-height: 300px;">
+				<div class="modal-body">
+					<h1>{{titulo}}</h1>
+					<p id="ajuda">{{ajuda}}</p>
+					<p>&nbsp;</p>
+					<p>
+						<b>Fonte:</b> <a id="fonte" href="#" >{{fonte}}</a><br/>
+						<b>Criado por:</b> <span id="criadopor">{{criadopor}}</span><br/>
+						<b>Tags:</b> <span id="tags">{{tags}}</span>
+					</p>
+					<p>&nbsp;</p>
+					<p><a class="btn btn-large btn-primary" href="#" data-dismiss="modal">CONTINUAR</a></p>
+
+					<p>&nbsp;</p>
+					<p><small>Tem alguma coisa errada com este desafio? <a href="#">Entre em contato!</a> </small></p>
+				</div> <!-- modal-body -->
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+
+
+
+
+	<!-- MODAL DE RESULTADO -->
+	<div id="desafio-resultado" class="modal fade" style="display: none;">
+		<div class="modal-dialog">
+			<div id="mensagem_ok" style="display:none;">
+				<div class="modal-content" style="background-color: #adff55; color: #fff; width: 500px;">
+					<div class="modal-body">
+
+						<img src="img/mensagem_ok.png" />
+						<h3>Parabéns! Você acertou todos os itens.</h3>
+
+						<p><a class="btn_proximodesafio btn btn-large btn-primary" href="#" data-dismiss="modal">PRÓXIMO DESAFIO</a>
+						&nbsp;<a class="btn_verresultado btn btn-large btn-primary" href="#" data-dismiss="modal">VER RESULTADO</a></p>
+
+					</div> <!-- modal-body -->
+				</div><!-- /.modal-content -->
+			</div>
+
+			<div id="mensagem_erro" style="display:none;">
+				<div class="modal-content" style="background-color: #101010; color: #fff; width: 500px; ">
+					<div class="modal-body">
+
+						<img src="img/mensagem_erro.png" />
+						<h3>Alguns itens estão posicionados incorretamente! Você pode ver a resposta ou corrigir e tentar acertar.</h3>
+						<p>
+							<a id="btn_corrigir" class="btn btn-large btn-warning" href="#" data-dismiss="modal">TENTAR NOVAMENTE</a>
+							&nbsp;<a class="btn_verresultado btn btn-large btn-primary" href="#" data-dismiss="modal">VER RESULTADO</a>
+						</p>
+					</div> <!-- modal-body -->
+				</div><!-- /.modal-content -->
+
+			</div>
+
+
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+
+
+
+
+	<!-- MODAL DE RESPOSTA  -->
+	<div id="desafio-resposta" class="modal fade" style="display: none;">
+		<div class="modal-dialog" style="width: 800px;">
+			<div class="modal-content" style="min-height: 500px;">
+
+				<div class="modal-body" style="background-color: #fff; min-height: 500px;">
+
+					<div class="row">
+					  <div class="col-lg-12">
+						<h1>{{nome}}</h1>
+						<p class="lead">Veja os dados utilizados e as respostas que você acertou/errou.</p>
+
+						<table class="table table-hover">
+							<thead>
+								<tr>
+								<th>Local</th>
+								<th>Equivalem a</th>
+								<th>Peões que você marcou</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								<td>1</td>
+								<td>Mark</td>
+								<td>Otto</td>
+								</tr>
+							</tbody>
+						</table>
+
+
+						<p>&nbsp;</p>
+						<p><a class="btn_proximodesafio btn btn-large btn-primary" href="#" data-dismiss="modal">PRÓXIMO DESAFIO</a></p>
+
+
+			      </div>
+			  </div>
+		  </div>
+		  </div>
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.knob.js"></script>
+    <script src="vendor/bootstrap/assets/js/holder.js"></script>
+    <script src="js/main.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="vendor/bootstrap/assets/js/html5shiv.js"></script>
+      <script src="vendor/bootstrap/assets/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+	<a href="https://github.com/luisleao/minibrasil"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>	
+	
+
+
+
+
+  </body>
+</html>
